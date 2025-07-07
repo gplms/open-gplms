@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GPLMS - Open Source & Free | General Purpose Library Management System | 👾</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+
+
+  <script>
+    // Simple scroll-to-section functionality for navbar
+    document.addEventListener("DOMContentLoaded", function() {
+      const navLinks = document.querySelectorAll('.navbar a[data-scroll]');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const sectionId = this.getAttribute('href').replace('#', '');
+          const section = document.getElementById(sectionId);
+          if(section) {
+            window.scrollTo({
+              top: section.offsetTop - 12 - (document.querySelector('.navbar').offsetHeight || 0),
+              behavior: "smooth"
+            });
+            // Mark as active
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+          }
+        });
+      });
+
+      // Download dropdown functionality
+      const versionSelect = document.getElementById('download-version');
+      const downloadBtn = document.getElementById('download-btn');
+      if(versionSelect && downloadBtn) {
+        downloadBtn.addEventListener('click', function() {
+          const url = versionSelect.value;
+          if(url) window.open(url, '_blank');
+        });
+      }
+    });
+    // GitHub Discussions button
+    function goToDiscussions() {
+      window.open('https://github.com/orgs/gplms/discussions', '_blank');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>GPLMS</h1>
+    <p>A General Purpose Library Management System</p>
+    <p style="margin-top:0.5em; font-size: 0.95em;">Made with 💖 by the community, for the community</p>
+  </header>
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="#home" data-scroll class="active">Home</a>
+    <a href="#documentation" data-scroll>Documentation</a>
+    <div class="dropdown">
+      <button class="dropbtn">Download <i class="fa-solid fa-download"></i></button>
+      <div class="dropdown-content">
+        <a href="#download" data-scroll>Download Options</a>
+        <a href="https://github.com/gplms/gplms/releases/tag/v0.0.1" target="_blank">Latest Release</a>
+        <a href="https://github.com/gplms/gplms/releases/download/v0.0.1/gplms-v0.0.1.zip" target="_blank">Version 0.0.1</a>
+        <a href="https://github.com/gplms/gplms/archive/refs/tags/v0.0.1.zip" target="_blank">Source Code (.zip)</a>
+      </div>
+    </div>
+    <a href="#features" data-scroll>Features</a>
+    <a href="#contribute" data-scroll>Contribute</a>
+   
+    <a href="https://github.com/gplms/gplms/issues" target="_blank"><i class="fa-solid fa-bug"></i> Issues</a>
+    <button class="github-btn" onclick="goToDiscussions()"><i class="fa-brands fa-github"></i> GitHub Discussions</button>
+  </nav>
+  <main>
+    <section id="home">
+      <h2>Welcome to GPLMS</h2>
+      <div class="quick-links">
+        <a href="#download" data-scroll>Quick Download</a>
+        <a href="https://github.com/gplms/gplms/wiki/FAQ" target="_blank">FAQ</a>
+        <a href="https://github.com/gplms/gplms/wiki/CHANGELOG" target="_blank">Changelog</a>
+        <a href="https://github.com/gplms/gplms/wiki/GETTING-STARTED" target="_blank">Getting Started</a>
+        <a href="https://github.com/gplms/gplms/wiki/GETTING-STARTED" target="_blank">Configuration Guide</a>
+      </div>
+      <p>
+        <strong>GPLMS</strong> is a free, open-source library management system for all types of libraries. Built for simplicity, you can get started in minutes and customize it to fit your needs.
+      </p>
+      <ul>
+        <li><strong>Technologies:</strong> HTML, CSS, JS, PHP, MySQL</li>
+        <li><strong>Compatible with:</strong> Apache, XAMPP, phpMyAdmin, MySQL Workbench</li>
+        <li><strong>Platform:</strong> Web (self-hosted, runs on your own server)</li>
+      </ul>
+      <div class="external-links">
+        <a href="https://github.com/gplms/gplms" target="_blank">GitHub Repository</a>
+        <a href="https://github.com/gplms/gplms?tab=MIT-1-ov-file" target="_blank">MIT License</a>
+      </div>
+    </section>
+
+    <section id="download">
+      <h2>Download Options</h2>
+      <div class="downloads">
+        <label for="download-version" style="font-weight:bold;">Choose Version:</label>
+        <select id="download-version">
+          <option value="https://github.com/gplms/gplms/releases/tag/v0.0.1">Latest Release</option>
+          <option value="https://github.com/gplms/gplms/releases/download/v0.0.1/gplms-v0.0.1.zip">Version 0.0.1</option>
+          <option value="https://github.com/gplms/gplms/archive/refs/tags/v0.0.1.zip">Source Code (main branch)</option>
+        </select>
+        <button id="download-btn">Download</button>
+        <a href="https://github.com/gplms/gplms/releases" target="_blank">All Releases</a>
+      </div>
+      <div style="margin-top:1em; color:#444;">
+        <b>Need help?</b> See the <a href="https://github.com/gplms/gplms/wiki/GETTING-STARTED" target="_blank">Installation Guide</a> or watch our <a href="https://www.youtube.com/@your-channel" target="_blank">YouTube setup video</a>.
+      </div>
+    </section>
+
+    <section id="documentation">
+      <h2>Documentation & Setup Guide</h2>
+      <div class="step-card">
+        <b>1. Download</b><br>
+        Get GPLMS from the download options above.
+      </div>
+      <div class="step-card">
+        <b>2. Install</b><br>
+        Copy the <code>src</code> folder to your server's root directory (e.g., <code>htdocs</code> in XAMPP).
+      </div>
+      <div class="step-card">
+        <b>3. Database Setup</b><br>
+        Import <code>database/importer.sql</code> into MySQL using phpMyAdmin or MySQL Workbench.
+      </div>
+      <div class="step-card">
+        <b>4. Configure</b><br>
+        Edit <code>conf/config.php</code> and set your database credentials.
+      </div>
+      <div class="step-card">
+        <b>5. Start Using</b><br>
+        Open <code>http://localhost/src</code> in your browser.<br>
+        Default login: <code>admin</code> / <code>12345</code>
+      </div>
+      <div class="step-card">
+        <b>6. Explore</b><br>
+        Check the <a href="https://github.com/gplms/gplms/wiki" target="_blank">Wiki</a> for advanced configuration, customization, and troubleshooting.
+      </div>
+
+    </section>
+
+    <section id="features">
+      <h2>Features</h2>
+      <table>
+        <tr><th>Feature</th><th>Description</th></tr>
+        <tr><td>Material Cataloging</td><td>Organize and manage books, journals, and digital materials.</td></tr>
+        <tr><td>User Management</td><td>Admins, staff, and regular users with role-based permissions.</td></tr>
+        <tr><td>Authors &amp; Publishers</td><td>Maintain detailed author and publisher records.</td></tr>
+        <tr><td>Configurable Settings</td><td>Change settings to fit your library’s needs easily.</td></tr>
+        <tr><td>Activity Logs</td><td>Track all actions for security and transparency.</td></tr>
+        <tr><td>Role-Based Access</td><td>Control access by user role for security.</td></tr>
+        <tr><td>Easy Backup &amp; Restore</td><td>Simple backup and restore options for your data.</td></tr>
+        <tr><td>Customizable Themes</td><td>Switch between light/dark or edit CSS for your own look.</td></tr>
+        <tr><td>Open Source</td><td>Community supported, free forever under the GPL.</td></tr>
+      </table>
+      <div class="external-links" style="margin-top:1.2em;">
+        <a href="https://github.com/gplms/gplms/issues" target="_blank">Request a Feature</a>
+        <a href="https://github.com/gplms/gplms/wiki/AVAILABLE-MODULES" target="_blank">Available Modules</a>
+      </div>
+    </section>
+
+    <section id="contribute">
+      <h2>Contribute & Community</h2>
+      <ul>
+        <li>Report bugs or suggest features via <a href="https://github.com/gplms/gplms/issues" target="_blank">GitHub Issues</a></li>
+        <li>Submit Pull Requests for new features or bug fixes</li>
+        <li>Read our <a href="https://github.com/gplms/gplms/blob/main/CONTRIBUTION.md" target="_blank">Contribution Guide</a></li>
+        <li>Join discussions or ask for help in <a href="https://github.com/orgs/gplms/discussions" target="_blank">GitHub Discussions</a></li>
+        <li>Chat on our <a href="https://github.com/gplms" target="_blank">Gitter Community</a></li>
+      </ul>
+      <h3>Project Info</h3>
+      <ul>
+        <li>Started at SAEK Mesologhiou by:</li>
+
+        <img src="https://www.saekmesol.gr/wp-content/uploads/2025/02/logo_saek-660x420.png" alt="">
+        <li>
+          <a href="https://github.com/PanagiotisKotsorgios" target="_blank">Panagiotis Kotsorgios</a>
+        </li>
+        <li>
+          <a href="https://github.com/Whatever1977" target="_blank">Fotis Markantonatos</a>
+        </li>
+      </ul>
+      <p>GPLMS is open source and community-driven. Your feedback and contributions are welcome!</p>
+    </section>
+  </main>
+  <footer>
+
+
+    <div class="footer-credit">
+      GPLMS &copy; 2025 &ndash; Simple, open, and made for everyone.<br>
+      <br>
+      Made with ❤ by <a href="https://github.com/PanagiotisKotsorgios" style="color:#fff;" target="_blank">Panagiotis Kotsorgios</a> &amp; <a href="https://github.com/Whatever1977" style="color:#fff;" target="_blank">Fotis Markantonatos</a>
+    </div>
+  </footer>
+</body>
+</html>
